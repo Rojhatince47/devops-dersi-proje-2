@@ -1,9 +1,12 @@
+import { useState } from 'react'
+import SummaryCards from './components/SummaryCards.jsx'
 import SubscriptionForm from './components/SubscriptionForm.jsx'
 import SubscriptionList from './components/SubscriptionList.jsx'
 import { useSubscriptions } from './hooks/useSubscriptions.js'
 
 export default function App() {
   const { items, loading, saving, error, add } = useSubscriptions()
+  const [today] = useState(() => new Date())
 
   return (
     <main className="app">
@@ -14,6 +17,8 @@ export default function App() {
           Aboneliklerini ekle; ne kadar ödediğini ve sırada ne olduğunu gör.
         </p>
       </header>
+
+      {!loading && items.length > 0 ? <SummaryCards items={items} /> : null}
 
       <div className="dashboard">
         <section className="form-panel" aria-labelledby="form-title">
@@ -34,7 +39,7 @@ export default function App() {
               Yükleniyor…
             </p>
           ) : (
-            <SubscriptionList items={items} />
+            <SubscriptionList items={items} today={today} />
           )}
         </section>
       </div>
