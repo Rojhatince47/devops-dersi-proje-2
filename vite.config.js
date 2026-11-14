@@ -13,5 +13,6 @@ export default defineConfig({
     globals: true,
     setupFiles: './src/test/setup.js',
     css: true,
+    fileParallelism: false,
   },
 })
