@@ -89,6 +89,47 @@ h1 {
   font-size: 1.05rem;
 }
 
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem 2.5rem;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding: 1rem 0;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.summary-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.summary-item + .summary-item {
+  padding-left: 2.5rem;
+  border-left: 1px solid var(--line);
+}
+
+.summary-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.summary-value {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.summary-item:first-child .summary-value {
+  font-size: clamp(1.9rem, 4.2vw, 2.7rem);
+}
+
 .dashboard {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
@@ -222,7 +263,7 @@ button:disabled {
 
 .subscription-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding: 0.95rem 0.25rem;
@@ -240,11 +281,37 @@ button:disabled {
 }
 
 .subscription-meta {
-  display: block;
   margin-top: 0.15rem;
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.78rem;
+}
+
+.subscription-meta::after {
+  content: ' ·';
+}
+
+.subscription-days {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.subscription-end {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  background: var(--highlight);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .subscription-amount {
@@ -296,6 +363,18 @@ button:disabled {
   }
 }
 
+@media (max-width: 620px) {
+  .summary {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .summary-item + .summary-item {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
 @media (max-width: 420px) {
   .app {
     width: calc(100% - 1.5rem);
@@ -307,6 +386,12 @@ button:disabled {
 
   h1 {
     font-size: clamp(2.1rem, 11vw, 2.8rem);
+  }
+
+  .subscription-end {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
   }
 }
 
