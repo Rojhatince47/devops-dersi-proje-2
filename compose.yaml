@@ -16,5 +16,17 @@ services:
       timeout: 5s
       retries: 10
 
+  app:
+    build: .
+    image: ghcr.io/rojhatince47/devops-dersi-proje-2:latest
+    ports:
+      - "8080:3000"
+    environment:
+      DATABASE_URL: postgres://abonelik:abonelik_dev@db:5432/abonelik
+      PORT: 3000
+    depends_on:
+      db:
+        condition: service_healthy
+
 volumes:
   pgdata:
