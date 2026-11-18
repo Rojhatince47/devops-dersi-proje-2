@@ -24,7 +24,7 @@ durumları (#4), mobil uyum (#5). Bunlar panoda "Yapılacak" sütununda durur.
 
 ## Pano
 
-[GitHub Projects panosu](https://github.com/Rojhatince47/devops-dersi-proje-2/projects)
+[GitHub Projects panosu](https://github.com/users/Rojhatince47/projects/2)
 — Yapılacak / Devam Ediyor / Tamamlandı sütunları, her görev için kabul
 kriterleri ve PR bağlantıları.
 
